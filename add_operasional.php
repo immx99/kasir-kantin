@@ -99,7 +99,7 @@ if ($search != null || $search != "") {
 
        <!-- BOX INFORMASI -->
     <?php
-if ($chmod >= 2 || $_SESSION['jabatan'] == 'admin') {
+if ($chmod >= 2 || $_SESSION['jabatan'] == 'admin' || $_SESSION['jabatan'] == 'user'  ) {
 	?>
 
 
@@ -122,7 +122,7 @@ if ($chmod >= 2 || $_SESSION['jabatan'] == 'admin') {
 
 
 
-		if(($no != null || $no != "") && ($chmod >= 3 || $_SESSION['jabatan'] == 'admin')){
+		if(($no != null || $no != "") && ($chmod >= 3 || $_SESSION['jabatan'] == 'admin' || $_SESSION['jabatan'] == 'user'  )){
 
 			   $sql="select * from $tabeldatabase where no='$no'";
                   $hasil2 = mysqli_query($conn,$sql);
@@ -229,7 +229,7 @@ if ($chmod >= 2 || $_SESSION['jabatan'] == 'admin') {
         $result=mysqli_query($conn,$sql);
 
               if(mysqli_num_rows($result)>0){
-				  if($chmod >= 3 || $_SESSION['jabatan'] == 'admin'){
+				  if($chmod >= 3 || $_SESSION['jabatan'] == 'admin' || $_SESSION['jabatan'] == 'user'  ){
                   $sql1 = "update $tabeldatabase set nama='$nama', biaya='$biaya', tanggal='$tanggal', keterangan='$keterangan' where kode='$kode'";
 			            $updatean = mysqli_query($conn, $sql1);
                   echo "<script type='text/javascript'>  alert('Berhasil, Data telah diupdate!'); </script>";
@@ -239,7 +239,7 @@ if ($chmod >= 2 || $_SESSION['jabatan'] == 'admin') {
           echo "<script type='text/javascript'>window.location = '$forwardpage';</script>";
           }
 			  }
-			else if(( $chmod >= 2 || $_SESSION['jabatan'] == 'admin')){
+			else if(( $chmod >= 2 || $_SESSION['jabatan'] == 'admin' || $_SESSION['jabatan'] == 'user'  )){
 
 					 $sql2 = "insert into $tabeldatabase values( '$kode','$nama','$tanggal','$biaya','$keterangan','$kasir','')";
            if(mysqli_query($conn, $sql2)){
